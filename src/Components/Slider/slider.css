@@ -1,0 +1,29 @@
+.dots {
+    bottom: 10px;
+    left: 45%;
+}
+.active_dot {
+    background: #9fe990;
+}
+.text-wrap {
+    max-width: max-content;
+    left: 25%;
+    right: 25%;
+    top: 44px;
+}
+.button {
+    top: 50%;
+}
+.button:hover{
+    background: #9fe990;
+}
+.slideImg {
+    max-height: 850px;
+    object-fit: cover;
+}
+.scale-95 {
+    transform: scale(0.95);
+}
+.duration-700 {
+    animation-duration: 0.7;
+}
