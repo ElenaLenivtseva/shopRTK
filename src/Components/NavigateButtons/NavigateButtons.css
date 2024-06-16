@@ -1,0 +1,32 @@
+.my_button {
+   background: grey;
+   color: white;
+   text-align: center;
+   padding: 1rem;
+   border-radius: 0.5rem;
+   -webkit-border-radius: 0.5rem;
+   -moz-border-radius: 0.5rem;
+   -ms-border-radius: 0.5rem;
+   -o-border-radius: 0.5rem;
+}
+.my_button:hover {
+    background: #9fe990;
+}
+.py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.wrap {
+    background: #9fe990;
+    margin: 0 auto;
+    width: 55%;
+} 
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.img-clothes {
+    height: 600px;
+    width: 70%;
+}
