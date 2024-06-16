@@ -1,6 +1,9 @@
 import React from "react";
 import './NavigateButtons.css'
 import clothes from '../../assets/images/clothes.jpg'
+import { filterProducts } from "../../features/slices/productsSlice";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function NavigateButtons() {
   const buttons = [
@@ -13,17 +16,21 @@ export default function NavigateButtons() {
     "Jackets",
     "Bags",
   ];
+
+  const dispatch = useDispatch()
   return (
     <div>
       <div className="flex items-center justify-center py-8">
         {buttons.map((button, index) => {
           return (
             <div key={index} className="mr-4">
+                <Link to={'/filtredProducts/' + button}>
               <button className="my_button"
+              onClick={()=>{dispatch(filterProducts(button))}}
               >
                 {button}
               </button>
-              
+              </Link>
             </div>
           );
         })}
