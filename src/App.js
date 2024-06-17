@@ -3,6 +3,7 @@ import "./App.css";
 import Main from "./Components/Main/Main";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FiltredProducts from "./Components/FiltredProducts/FiltredProducts";
+import SingleProduct from './Components/SinglePage/SinglePage'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Main />}/>
+          <Route path='/filtredProducts/:type/:id' element={<SingleProduct/>}/>
           <Route path='/filtredProducts/:type' element={<FiltredProducts />}/>
           
         </Routes>
