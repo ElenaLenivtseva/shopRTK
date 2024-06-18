@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import "../NavigateButtons/NavigateButtons";
 
 export default function SinglePage() {
   const product = useSelector((state) => state.products.singleProduct);
   const productSize = product[0].size ? product[0].size[0] : "";
+  const productColor = product[0].color[0];
   const { id } = useParams();
   const [size, setSize] = useState(productSize);
+  const [color, setColor] = useState(productColor);
 
   return (
     <div>
@@ -63,6 +66,31 @@ export default function SinglePage() {
                       <></>
                     )}
                   </div>
+                  <div className='pb-4'>
+                    <label
+                      htmlFor="color"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Pick a color
+                    </label>
+
+                    <select
+                      id="color"
+                      value={color}
+                      onChange={(e) => setColor(e.target.value)}
+                      name="color"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                      {item.color.map((item, index) => {
+                        return (
+                          <option key={index} value={item}>
+                            {item}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <button className="my_button">Add to cart</button>
                 </div>
               </div>
             </div>
