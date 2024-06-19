@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "../NavigateButtons/NavigateButtons";
+import { addToCart } from "../../features/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 export default function SinglePage() {
+  const dispatch = useDispatch();
   const product = useSelector((state) => state.products.singleProduct);
   const productSize = product[0].size ? product[0].size[0] : "";
   const productColor = product[0].color[0];
@@ -32,6 +35,9 @@ export default function SinglePage() {
                   </h5>
                   <p className="text-orange-700 text-xl font-inter font-bold font-tracking-normal leading-none pb-4">
                     50% OFF
+                  </p>
+                  <p className="text-black-700 text-xl font-inter font-bold font-tracking-normal leading-none pb-4">
+                    {item.price}$
                   </p>
                   <p className="text-gray-600 text-xl font-inter font-bold font-tracking-normal leading-none pb-4">
                     {item.text}
@@ -66,7 +72,7 @@ export default function SinglePage() {
                       <></>
                     )}
                   </div>
-                  <div className='pb-4'>
+                  <div className="pb-4">
                     <label
                       htmlFor="color"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -90,7 +96,20 @@ export default function SinglePage() {
                       })}
                     </select>
                   </div>
-                  <button className="my_button">Add to cart</button>
+                  <button
+                    className="my_button"
+                    onClick={() => dispatch(addToCart({
+                      id: item.id,
+                      name: item.name,
+                      price: item.price,
+                      size: size,
+                      color: color,
+                      amount: 1,
+                      totalPrice: item.price,
+                    }))}
+                  >
+                    Add to cart
+                  </button>
                 </div>
               </div>
             </div>
