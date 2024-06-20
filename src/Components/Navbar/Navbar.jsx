@@ -1,7 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import logo from "../../assets/images/logo.png";
 import "./Navbar.css";
+import Cart from "../Cart/Cart";
+
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+ 
+  const handleOpen = () => setOpen(true);
   return (
     <>
       <div className="bg-black p-2 w-full">
@@ -36,7 +41,7 @@ const Navbar = () => {
               Wish List
             </p>
           </div>
-          <div className="flex flex-row items-center cursor-pointer">
+          <div className="flex flex-row items-center cursor-pointer" onClick={()=>{handleOpen}}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -54,6 +59,7 @@ const Navbar = () => {
             <p className="font-inter text-base font-medium tracking-normal leading-none text-center ">
               Shopping bag
             </p>
+            <div>{open &&<Cart openModal={open} setOpen={setOpen}/>}</div>
           </div>
         </div>
       </div>
