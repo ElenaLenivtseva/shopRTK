@@ -1,12 +1,4 @@
 import React from "react";
-// import {
-//   Card,
-//   CardHeader,
-//   CardBody,
-//   CardFooter,
-//   Typography,
-//   Button,
-// } from "@material-tailwind/react";
 import { useDispatch } from "react-redux";
 import { singleProduct } from "../../features/slices/productsSlice";
 import { Link, useParams } from "react-router-dom";
@@ -40,7 +32,6 @@ const ProductCard = ({ id, img, name, text, price, colors }) => {
               );
             })}
           </p>
-          {/* <Button>Read More</Button> */}
         </div>
       </div>
     </Link>
