@@ -101,6 +101,8 @@ export default function SinglePage() {
                     onClick={() => dispatch(addToCart({
                       id: item.id,
                       name: item.name,
+                      img: item.img,
+                      text: item.text,
                       price: item.price,
                       size: size,
                       color: color,

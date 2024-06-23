@@ -8,7 +8,7 @@ const Navbar = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => setOpen(!open);
   return (
     <>
       <div className="bg-black p-2 w-full">
@@ -45,9 +45,7 @@ const Navbar = () => {
           </div>
           <div
             className="flex flex-row items-center cursor-pointer"
-            onClick={() => {
-              handleOpen;
-            }}
+            onClick={handleOpen}
           >
             {totalAmount > 0 ? (
               <span className="rounded-full bg-gray-300 px-2 font-inter text-sm mr-1">
@@ -73,10 +71,13 @@ const Navbar = () => {
             <p className="font-inter text-base font-medium tracking-normal leading-none text-center ">
               Shopping bag
             </p>
-            <div>{open && <Cart openModal={open} setOpen={setOpen} />}</div>
+            {/* <div>{open && <Cart openModal={open} setOpen={setOpen} />}</div> */}
+            
+            
           </div>
         </div>
       </div>
+      <div>{open && <Cart />}</div>
       <div className="flex bg-black p-4 w-full justify-around">
         <div className="text-white font-inter text-base font-medium tracking-normal leading-none text-center">
           50% OFF

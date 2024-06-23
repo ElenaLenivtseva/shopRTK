@@ -1,0 +1,30 @@
+.dialog {
+    position: absolute;
+    width: auto;
+    min-width: 500px;
+    min-height: 495px;
+    height: auto;
+    top: calc(50% - 250px);
+    left: calc(50% - 175px);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    cursor: default;
+    padding: 40px;
+    z-index: 100;
+    background: white;
+    font-size: 40px;
+}
+.dialogProdImg {
+    max-height: 125px;
+    object-fit: cover;
+    max-width: 100%;
+}
+.dialogProdWrap {
+    grid-template-columns: 1fr 1fr;
+}
+.dialogProdImgWrap {
+    
+}
+.dialogFooter {
+    text-align: center;
+}

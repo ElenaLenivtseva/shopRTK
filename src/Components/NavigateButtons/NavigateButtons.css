@@ -16,6 +16,21 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+.my_button_remove {
+    background: grey;
+    color: white;
+    text-align: center;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    font-size: 15px;
+}
+.my_button_remove:hover {
+    background: rgb(192, 80, 80)990;
+}
 
 .wrap {
     background: #9fe990;
