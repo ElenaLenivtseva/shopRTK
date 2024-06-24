@@ -3,11 +3,16 @@ import logo from "../../assets/images/logo.png";
 import "./Navbar.css";
 import Cart from "../Cart/Cart";
 import { useSelector } from "react-redux";
+import { logout } from "../../features/slices/authSlice";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
-  const [open, setOpen] = useState(false);
 
+  const user = useSelector((state) => state.auth.user);
+  const { name, image } = user;
+  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
   const handleOpen = () => setOpen(!open);
   return (
     <>
@@ -21,10 +26,8 @@ const Navbar = () => {
           <img className="h-28 w-full" alt="store" src={logo} />
         </div>
         <div className="flex flex-row items-center">
-          <button className="font-inter text-base font-medium tracking-normal leading-none text-center mr-4">
-            Logout
-          </button>
-          <div className="flex flex-row items-center">
+          
+          <div className="flex flex-row items-center mr-3 ml-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -39,7 +42,7 @@ const Navbar = () => {
                 d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
               />
             </svg>
-            <p className="font-inter text-base font-medium tracking-normal leading-none text-center mr-2">
+            <p className="font-inter text-base font-medium tracking-normal leading-none text-center ">
               Wish List
             </p>
           </div>
@@ -71,10 +74,18 @@ const Navbar = () => {
             <p className="font-inter text-base font-medium tracking-normal leading-none text-center ">
               Shopping bag
             </p>
-            {/* <div>{open && <Cart openModal={open} setOpen={setOpen} />}</div> */}
-            
-            
           </div>
+          <div className="flex flex-row items-center cursor-pointer pl-4">
+            {image && <div className="avatar">
+              <img src={image} alt="avatar" /></div>}
+              <p>{name}</p>
+          </div>
+          <button
+            className="font-inter text-base font-medium tracking-normal leading-none text-center mr-4"
+            onClick={() => dispatch(logout())}
+          >
+            Logout
+          </button>
         </div>
       </div>
       <div>{open && <Cart />}</div>

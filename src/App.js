@@ -3,27 +3,26 @@ import "./App.css";
 import Main from "./Components/Main/Main";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FiltredProducts from "./Components/FiltredProducts/FiltredProducts";
-import SingleProduct from './Components/SinglePage/SinglePage'
+import SingleProduct from "./Components/SinglePage/SinglePage";
 import { useSelector } from "react-redux";
 import Login from "./Components/Login/Login";
 
 function App() {
-  const cart = useSelector((state)=>state.cart.cart)
-  const totalAmount = useSelector((state)=>state.cart.totalAmount)
-  const totalPrice = useSelector((state)=>state.cart.totalPrice)
-
-  console.log('cart', cart)
-  console.log('totalAmount', totalAmount)
-  console.log('totalPrice', totalPrice)
+  const user = useSelector((state) => state.auth.user);
+  const { authUser } = user;
+  console.log("auth", authUser);
+  console.log("user", user);
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Main />}/>
-          <Route path='/login' element={<Login />}/>
-          <Route path='/filtredProducts/:type/:id' element={<SingleProduct/>}/>
-          <Route path='/filtredProducts/:type' element={<FiltredProducts />}/>
+          <Route path="/" element={authUser ? <Main /> : <Login />} />
           
+          <Route
+            path="/filtredProducts/:type/:id"
+            element={<SingleProduct />}
+          />
+          <Route path="/filtredProducts/:type" element={<FiltredProducts />} />
         </Routes>
       </BrowserRouter>
     </div>

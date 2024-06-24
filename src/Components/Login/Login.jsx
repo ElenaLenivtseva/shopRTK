@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./Login.css";
+import {login} from '../../features/slices/authSlice'
+import { useDispatch } from "react-redux";
+
 const Login = () => {
+  const dispatch = useDispatch()
   const initialState = {
     name: "",
     password: "",
@@ -49,11 +53,8 @@ const Login = () => {
             value={values.image}
             onChange={onChange}
           />
-          {/* <div className="form__remember">
-            <input type="checkbox" name="checkbox" id="checkbox" className="form__check" onChange={(e)=>setCheckbox(e.target.value)}/>
-            <p className="form__rememberText">Remember me</p>
-          </div> */}
-          <button className="form__button">SIGN IN</button>
+         
+          <button className="form__button" onClick={()=>dispatch(login(values))}>SIGN IN</button>
 
           <p className="form__bottom">Image is Optional</p>
         </div>
