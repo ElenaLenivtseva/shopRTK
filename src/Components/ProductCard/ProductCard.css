@@ -1,17 +1,14 @@
 .card {
-margin-top: 1.5rem;
-width: 24rem;
+    margin-top: 1.5rem;
+    width: 24rem;
 }
 .cardHeader {
-height: 24rem;
-position: relative;
+    height: 24rem;
+    position: relative;
 }
 .cardHeader__img {
     height: 250px;
     object-fit: cover;
-}
-.cardBody {
-
 }
 .cardFooter{
     padding-top: 0;

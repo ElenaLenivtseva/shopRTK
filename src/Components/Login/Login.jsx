@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Login.css";
-import {login} from '../../features/slices/authSlice'
 import { useDispatch } from "react-redux";
+import {login} from '../../features/slices/authSlice'
+import "./Login.css";
 
 const Login = () => {
   const dispatch = useDispatch()

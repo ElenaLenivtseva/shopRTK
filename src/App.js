@@ -10,14 +10,12 @@ import Login from "./Components/Login/Login";
 function App() {
   const user = useSelector((state) => state.auth.user);
   const { authUser } = user;
-  console.log("auth", authUser);
-  console.log("user", user);
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={authUser ? <Main /> : <Login />} />
-          
+
           <Route
             path="/filtredProducts/:type/:id"
             element={<SingleProduct />}

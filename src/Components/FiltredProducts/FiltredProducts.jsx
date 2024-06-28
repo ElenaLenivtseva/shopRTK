@@ -1,13 +1,23 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../ProductCard/ProductCard";
+import Error from "../Error/Error";
+import {
+  filterProducts,
+  filterGender,
+  sortByPrice,
+  filterByColor,
+  filterBySize,
+} from "../../features/slices/productsSlice";
 import "./FiltredProducts.css";
 import "../NavigateButtons/NavigateButtons.css";
 
 const FiltredProducts = () => {
   const products = useSelector((state) => state.products.filtredProducts);
+  const error = useSelector((state) => state.products.error);
   const { type } = useParams();
+  const dispatch = useDispatch();
   const [colorMenuOpen, setColorMenuOpen] = useState(false);
   const [sizeMenuOpen, setSizeMenuOpen] = useState(false);
   const genderButtons = ["male", "female"];
@@ -33,11 +43,21 @@ const FiltredProducts = () => {
               {genderButtons.map((item, index) => {
                 return (
                   <div className="" key={index}>
-                    <button className="my_button">{item}</button>
+                    <button
+                      className="my_button"
+                      onClick={() => dispatch(filterGender(item))}
+                    >
+                      {item}
+                    </button>
                   </div>
                 );
               })}
-              <button className="my_button">High price</button>
+              <button
+                className="my_button"
+                onClick={() => dispatch(sortByPrice())}
+              >
+                High price
+              </button>
 
               <div className="menu">
                 <div className="menuHandler">
@@ -55,7 +75,8 @@ const FiltredProducts = () => {
                         <div
                           className="menuItem"
                           key={index}
-                          style={{ color: item }}
+                          style={{ color: item, cursor: "pointer" }}
+                          onClick={() => dispatch(filterByColor(item))}
                         >
                           {item}
                         </div>
@@ -67,6 +88,7 @@ const FiltredProducts = () => {
               <div className="menu">
                 <div className="menuHandler">
                   <button
+                    disabled={type === "Bags" || type === "Shoes"}
                     className="menuOpenButton my_button"
                     onClick={() => setSizeMenuOpen(!sizeMenuOpen)}
                   >
@@ -77,7 +99,12 @@ const FiltredProducts = () => {
                   <div className="menuList">
                     {sizeButtons.map((item, index) => {
                       return (
-                        <div className="menuItem" key={index}>
+                        <div
+                          className="menuItem"
+                          key={index}
+                          style={{ cursor: "pointer" }}
+                          onClick={() => dispatch(filterBySize(item))}
+                        >
                           {item}
                         </div>
                       );
@@ -87,29 +114,37 @@ const FiltredProducts = () => {
               </div>
             </div>
             <div className="pr-14">
-              <button className='my_button'>Clear filter</button>
+              <button
+                className="my_button"
+                onClick={() => dispatch(filterProducts(type))}
+              >
+                Clear filter
+              </button>
             </div>
           </div>
         </div>
-        <div className="grid-products">
-          {products
-            .filter((product) => product.type === type)
-            .map((product, index) => {
-              console.log(product);
-              return (
-                <div key={index}>
-                  <ProductCard
-                    id={product.id}
-                    name={product.name}
-                    text={product.text}
-                    price={product.price}
-                    colors={product.color}
-                    img={product.img}
-                  />
-                </div>
-              );
-            })}
-        </div>
+        {error ? (
+          <Error />
+        ) : (
+          <div className="grid-products">
+            {products
+              .filter((product) => product.type === type)
+              .map((product, index) => {
+                return (
+                  <div key={index}>
+                    <ProductCard
+                      id={product.id}
+                      name={product.name}
+                      text={product.text}
+                      price={product.price}
+                      colors={product.color}
+                      img={product.img}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+        )}
       </div>
     </>
   );

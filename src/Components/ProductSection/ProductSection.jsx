@@ -1,7 +1,8 @@
 import React from "react";
-import { storeData } from "../../assets/data/dummyData";
 import ProductSectionItem from "./ProductSectionItem";
+import { storeData } from "../../assets/data/dummyData";
 import './ProductSection.css'
+
 const ProductSection = () => {
   return (
     <div>

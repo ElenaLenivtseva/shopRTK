@@ -1,0 +1,16 @@
+.error {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c03e3e;
+    color: white;
+    padding: 1rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+}

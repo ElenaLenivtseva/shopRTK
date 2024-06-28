@@ -1,75 +1,9 @@
 import React from "react";
-import {
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-  Tooltip,
-} from "@material-tailwind/react";
 import "./Cart.css";
 import '../../Components/NavigateButtons/NavigateButtons.css'
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromTheCart } from "../../features/slices/cartSlice";
 
-// export default function Cart({ openModal, setOpen }) {
-//   const cart = useSelector((state) => state.cart.cart);
-//   const totalPrice = useSelector((state) => state.cart.totalPrice);
-//   return (
-//     <div>
-//       {cart.length > 0 ? (
-//         <>
-//           <div
-//             className="dialog border-0 outline-0"
-//             open={openModal}
-//             handler={() => setOpen(false)}
-//           >
-//             <div className="dialogHeader">Shopping Bag</div>
-//             <div className="dialogBody divider flex flex-col justify-center items-start">
-//               {cart.map((item, index) => {
-//                 return (
-//                   <div key={index}>
-//                     <div className="grid grid-cols-2 py-4">
-//                       <div>
-//                         <img
-//                           className="h-[125px] rounded-md"
-//                           src={item.img}
-//                           alt={item.name}
-//                         />
-//                       </div>
-//                     </div>
-//                   </div>
-//                 );
-//               })}
-//             </div>
-//             {/* <DialogFooter>
-//           </DialogFooter> */}
-//           </div>
-//         </>
-//       ) : (
-//         <>
-//           <div
-//             className="dialog border-0 outline-0"
-//             open={openModal}
-//             handler={() => setOpen(false)}
-//           >
-//             <div className="dialogHeader">Shopping Bag</div>
-//             <div className="dialogBody">
-//               <div>
-//                 <h1 className="text-black text-3xl font-inter font-bold tracking-normal leading-none py-4">
-//                   Yor bag is empty
-//                 </h1>
-//                 <p className="text-black text-base font-inter  tracking-normal leading-none">
-//                   Add some products
-//                 </p>
-//               </div>
-//             </div>
-//           </div>
-//         </>
-//       )}
-//     </div>
-//   );
-// }
 export default function Cart() {
   const cart = useSelector((state) => state.cart.cart);
   const totalPrice = useSelector((state) => state.cart.totalPrice);

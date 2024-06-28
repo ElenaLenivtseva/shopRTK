@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { singleProduct } from "../../features/slices/productsSlice";
 import { Link, useParams } from "react-router-dom";
+import { singleProduct } from "../../features/slices/productsSlice";
 
 const ProductCard = ({ id, img, name, text, price, colors }) => {
   const dispatch = useDispatch();

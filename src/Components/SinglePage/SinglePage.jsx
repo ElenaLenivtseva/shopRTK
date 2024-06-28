@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import "../NavigateButtons/NavigateButtons";
 import { addToCart } from "../../features/slices/cartSlice";
-import { useDispatch } from "react-redux";
+import "../NavigateButtons/NavigateButtons";
 
 export default function SinglePage() {
   const dispatch = useDispatch();
@@ -98,17 +97,21 @@ export default function SinglePage() {
                   </div>
                   <button
                     className="my_button"
-                    onClick={() => dispatch(addToCart({
-                      id: item.id,
-                      name: item.name,
-                      img: item.img,
-                      text: item.text,
-                      price: item.price,
-                      size: size,
-                      color: color,
-                      amount: 1,
-                      totalPrice: item.price,
-                    }))}
+                    onClick={() =>
+                      dispatch(
+                        addToCart({
+                          id: item.id,
+                          name: item.name,
+                          img: item.img,
+                          text: item.text,
+                          price: item.price,
+                          size: size,
+                          color: color,
+                          amount: 1,
+                          totalPrice: item.price,
+                        })
+                      )
+                    }
                   >
                     Add to cart
                   </button>

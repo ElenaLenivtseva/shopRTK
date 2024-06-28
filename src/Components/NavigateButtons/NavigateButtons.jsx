@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { filterProducts } from "../../features/slices/productsSlice";
 import './NavigateButtons.css'
 import clothes from '../../assets/images/clothes.jpg'
-import { filterProducts } from "../../features/slices/productsSlice";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+
 
 export default function NavigateButtons() {
   const buttons = [
